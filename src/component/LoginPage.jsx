@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { signInWithEmailAndPassword,signInWithRedirect } from "firebase/auth";
 import { auth, provider } from '../utils/fireabase';
-import { GoogleButton } from "react-google-button"
+// import { GoogleButton } from "react-google-button"
 
 const LoginPage = () => {
 
@@ -13,7 +13,7 @@ const LoginPage = () => {
 
     const [value, setValue] = useState("");
     const handleClick = () => {
-        signInWithPopup(auth, provider).then((data) => {
+        signInWithRedirect(auth, provider).then((data) => {
             setValue(data.user.email)
             localStorage.setItem("email", data.user.email)
 
